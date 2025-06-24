@@ -2,10 +2,8 @@
   description = "runme application";
 
   inputs = {
-    nixpkgs.url = "nixpkgs"; # Resolves to github:NixOS/nixpkgs
     # Helpers for system-specific outputs
     flake-utils.url = "github:numtide/flake-utils";
-    pythonPackages = pkgs.python312Packages;
   };
 
   outputs = { self, nixpkgs, flake-utils }:
