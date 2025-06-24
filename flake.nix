@@ -1,4 +1,4 @@
-={
+{
   description = "runme application";
 
   inputs = {
