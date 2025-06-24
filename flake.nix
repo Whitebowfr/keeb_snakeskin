@@ -32,7 +32,8 @@
           # add them to PYTHONPATH and thus make them accessible from within the venv.
           pythonPackages.numpy
         ];
-
+	
+	postShellHook = ''
 	export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${
      	 with pkgs;
       	   lib.makeLibraryPath [ libGL xorg.libX11 xorg.libXi expat]
