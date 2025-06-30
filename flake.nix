@@ -33,7 +33,7 @@
         # A simple executable package
 
         packages.default = pkgs.writeScriptBin "runme" ''
-
+          #!/bin/bash
           echo "I am currently being run!"
 
         '';
