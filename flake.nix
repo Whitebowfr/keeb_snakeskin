@@ -12,10 +12,10 @@
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs { inherit system; };
-	pythonPackages = pkgs.python312Packages;
+	      pythonPackages = pkgs.python312Packages;
       in
       {
-	buildInputs = [
+	      buildInputs = [
           # A Python interpreter including the 'venv' module is required to bootstrap
           # the environment.
           pythonPackages.python
@@ -32,22 +32,29 @@
           pythonPackages.numpy
         ];
 	
-	postShellHook = ''
-	export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${
-     	 with pkgs;
-      	   lib.makeLibraryPath [ libGL xorg.libX11 xorg.libXi expat]
-         }"
+	      postShellHook = ''
+            export LD_LIBRARY_PATH="$LD_LIBRARY_PATH:${
+            with pkgs;
+                lib.makeLibraryPath [ libGL xorg.libX11 xorg.libXi expat]
+              }"
        '';
 
         # A simple executable package
         packages.default = pkgs.writeScriptBin "runme" ''
-          python ./src/snakeskin.py
+
+          echo "I am currently being run!"
+
         '';
 
+
         # An app that uses the `runme` package
+
         apps.default = {
+
           type = "app";
+
           program = "${self.packages.${system}.runme}/bin/runme";
+
         };
       });
 }
