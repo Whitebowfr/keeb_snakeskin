@@ -42,7 +42,7 @@
         # A simple executable package
         packages.default = pkgs.writeScriptBin "runme" ''
           #!/bin/bash
-          python ./src/snakeskin.py
+          ${pythonPackages.python}/bin/python ${self.packages.${system}.default}/src/snakeskin.py
 
         '';
 
