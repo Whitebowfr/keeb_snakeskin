@@ -45,7 +45,7 @@
 
           type = "app";
 
-          program = "${self.packages.${system}.runme}/bin/runme";
+          program = "${self.packages.${system}.default}/bin/runme";
 
         };
 
