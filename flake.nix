@@ -41,13 +41,13 @@
 
         # A simple executable package
         packages.default = pkgs.writeScriptBin "runme" ''
-          echo "I am currently being run!"
+          python ./src/snakeskin.py
         '';
 
         # An app that uses the `runme` package
         apps.default = {
           type = "app";
-          program = "python ./src/snakeskin.py";
+          program = "${self.packages.${system}.runme}/bin/runme";
         };
       });
 }
