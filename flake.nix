@@ -40,9 +40,10 @@
        '';
 
         # A simple executable package
-        packages.default = pkgs.writeScriptBin "runme" ''
+        packages.default = pkgs.writeShellScriptBin "runme" ''
           #!/bin/bash
-          ${pythonPackages.python}/bin/python ${self.packages.${system}.default}/src/snakeskin.py
+          cd ${self}
+          ${pythonPackages.python}/bin/python ./src/snakeskin.py
 
         '';
 
